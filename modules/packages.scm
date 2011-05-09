@@ -34,6 +34,17 @@
   (open scheme silly util i/o extended-ports)
   (files "url-utils.scm"))
 
+(define-structure xml
+  (export xml xml-join literally)
+  (open scheme tree-strings extended-ports text-codecs util srfi-1
+	define-record-types i/o)
+  (files "xml.scm"))
+
+(define-structure deferred-tasks
+  (export call-later minder)
+  (open scheme queues threads time)
+  (files "deferred-tasks.scm"))
+
 (define-structure magic
   (export cleanup define-handler add-response-content-type!
 	  add-response-cookie! send current-request send-newline page xml
@@ -41,8 +52,12 @@
   (open scheme srfi-13 srfi-14 fluids sockets i/o primitives threads
 	byte-vectors encodings text-codecs extended-ports queues srfi-1
 	posix-time ascii define-record-types cells handle srfi-27 srfi-8
-	posix-i/o interrupts posix-processes posix-files posix-regexps tables
-	time queues simple-signals os-strings io-utils property-lists
-	sequence-utils tree-strings process-utils url-utils)
+	posix-files posix-regexps tables
+	time simple-signals os-strings
+
+	; posix-processes posix-i/o interrupts
+
+	io-utils property-lists sequence-utils
+	tree-strings process-utils url-utils xml deferred-tasks)
   (files "magic.scm"))
 
