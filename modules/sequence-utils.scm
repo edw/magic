@@ -91,3 +91,8 @@
 (define (flatten list)
   (if (null? list) list
       (apply append (car list) (cdr list))))
+
+(define (cadr-or-else pair else)
+  (if (null? (cdr pair))
+      else
+      (cadr pair)))

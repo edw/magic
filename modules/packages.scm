@@ -15,7 +15,7 @@
 
 (define-structure sequence-utils
   (export starts-with? string-downcase byte-vector->string char-in-list?
-	  tok make-seeker snap trim-back trim-front trim flatten)
+	  tok make-seeker snap trim-back trim-front trim flatten cadr-or-else)
   (open scheme silly queues srfi-1 encodings)
   (files "sequence-utils.scm"))
 
@@ -52,8 +52,9 @@
 
 (define-structure magic
   (export cleanup define-handler add-response-content-type!
-	  add-response-cookie! send current-request send-newline page xml
-	  literally form file field redirect! ajax-link ajax-form minder serve)
+	  add-response-cookie! send current-request send-newline xml
+	  literally form submit file field redirect! ajax-link
+	  ajax-stateless-link ajax-form minder serve)
   (open scheme srfi-13 srfi-14 fluids sockets i/o primitives threads
 	byte-vectors encodings text-codecs extended-ports queues srfi-1
 	posix-time ascii define-record-types cells handle srfi-27 srfi-8
@@ -63,3 +64,14 @@
 	tree-strings process-utils url-utils xml deferred-tasks cookies)
   (files "magic.scm"))
 
+(define-structure magic-demos
+  (export start)
+  (open scheme srfi-13 srfi-14 fluids sockets i/o primitives threads
+	byte-vectors encodings text-codecs extended-ports queues srfi-1
+	posix-time ascii define-record-types cells handle srfi-27 srfi-8
+	posix-files posix-regexps tables
+
+	magic
+	time simple-signals os-strings io-utils property-lists sequence-utils
+	tree-strings process-utils url-utils xml deferred-tasks cookies)
+  (files "magic-demos.scm"))
