@@ -61,15 +61,14 @@
 	posix-files posix-regexps tables
 
 	time simple-signals os-strings io-utils property-lists sequence-utils
-	tree-strings process-utils url-utils xml deferred-tasks cookies)
+	url-utils xml deferred-tasks cookies)
   (files "magic.scm"))
 
 (define-structure magic-demos
   (export start)
-  (open scheme srfi-13 srfi-14 fluids sockets i/o primitives threads
-	byte-vectors encodings text-codecs extended-ports queues srfi-1
-	posix-time ascii define-record-types cells handle srfi-27 srfi-8
-	posix-files posix-regexps tables
+  (open scheme
+	i/o srfi-1 srfi-13 threads text-codecs posix-time posix-files
+	posix-regexps
 
 	magic
 	time simple-signals os-strings io-utils property-lists sequence-utils
