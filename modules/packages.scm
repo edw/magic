@@ -45,6 +45,11 @@
   (open scheme queues threads time)
   (files "deferred-tasks.scm"))
 
+(define-structure cookies
+  (export make-cookie-string make-cookie-string-unescaped split-cookie-pairs)
+  (open scheme posix-time sequence-utils tree-strings url-utils)
+  (files "cookies.scm"))
+
 (define-structure magic
   (export cleanup define-handler add-response-content-type!
 	  add-response-cookie! send current-request send-newline page xml
@@ -53,11 +58,8 @@
 	byte-vectors encodings text-codecs extended-ports queues srfi-1
 	posix-time ascii define-record-types cells handle srfi-27 srfi-8
 	posix-files posix-regexps tables
-	time simple-signals os-strings
 
-	; posix-processes posix-i/o interrupts
-
-	io-utils property-lists sequence-utils
-	tree-strings process-utils url-utils xml deferred-tasks)
+	time simple-signals os-strings io-utils property-lists sequence-utils
+	tree-strings process-utils url-utils xml deferred-tasks cookies)
   (files "magic.scm"))
 
